@@ -1,0 +1,78 @@
+<!-- страница доступна для авторизованного пользователя  -->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+</head>
+<body>
+<h1>Your Personal Account</h1>
+<table style="margin-left:auto;margin-right:auto;">
+    <tr>
+        <!--<tr>
+            <#if user.avatarUrl??>
+            <td><img alt="user_img" src="${user.avatarUrl}" class="avatar"></td>
+            <#else>
+            <td><img alt="user_img" src="/files/img.png" class="avatar"></td>
+        </#if>
+        </tr>  -->
+        <td>
+            <table>
+                <tr>
+                    <td>
+                        <h2>
+                            <strong>Nickname: ${user.name}</strong>
+                        </h2>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <h3>
+                            <em>Login: ${user.login} </em>
+                        </h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3>
+                            <em>Email: ${user.email} </em>
+                        </h3>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<form action="/upload" method="post" novalidate enctype="multipart/form-data" class="button_load">
+    <br>
+    <p style="font-size:25px">
+        Change avatar
+    </p>
+
+    <p class="lead">
+        <input name="avatar" type="file" accept=".jpg, .png, .jpeg">
+    </p>
+
+    <p class="lead">
+        <input type="submit" name="upload" value="Change">
+    </p>
+</form>
+
+<br>
+<p class="lead"><a href="/signOut">Sign Out</a></p>
+<br>
+
+<div sec:authorize="isAuthenticated()">
+    Authenticated as <span sec:authentication="name"></span>
+</div>
+
+</body>

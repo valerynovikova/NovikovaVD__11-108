@@ -1,0 +1,34 @@
+<!-- страница доступна для авторизованного пользователя  -->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+</head>
+<body>
+<img src="images/img_1.jpg" class="u-logo-image u-logo-image-1">
+<div class="u-custom-menu u-nav-container">
+    <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-dark-1" href="home.html" target="_blank" style="padding: 10px 20px;">Home</a> </li></ul>
+    <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-dark-1" href="articles_info.html" target="_blank" style="padding: 10px 20px;">All Articles</a> </li></ul>
+    <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-dark-1" href="reports_info.html" target="_blank" style="padding: 10px 20px;">All Reports</a> </li></ul>
+    <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-dark-1" href="sign_up.html" target="_blank" style="padding: 10px 20px;">Sign Up</a> </li></ul>
+    <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-dark-1" href="sign_in.html" target="_blank" style="padding: 10px 20px;">Sign In</a> </li></ul>
+    <!-- </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-dark-1" href="#" target="_blank" style="padding: 10px 20px;">Add Article</a>  -->
+    <!--</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-text-palette-1-dark-1" href="#" target="_blank" style="padding: 10px 20px;">Add Report</a> -->
+    </li></ul>
+</div>
+<div class="container text-center">
+    <h1>Home page</h1>
+    <div sec:authorize="isAuthenticated()">
+        Authenticated as <span sec:authentication="name"></span>
+    </div>
+</div>
+</body>
+</html>
