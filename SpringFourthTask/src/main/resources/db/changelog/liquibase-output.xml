@@ -1,0 +1,101 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="maratsolncev (generated)" id="1680250833617-1">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" startWith="2" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="verification_code" type="VARCHAR(64)"/>
+            <column name="group_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-2">
+        <createTable tableName="groups">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="groups_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(16)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-3">
+        <createTable tableName="passports">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="passports_pkey"/>
+            </column>
+            <column name="number" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="series" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-4">
+        <createTable tableName="roles">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-5">
+        <createTable tableName="subjects">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="subjects_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-6">
+        <createTable tableName="groups_subjects">
+            <column name="group_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subject_id" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-7">
+        <createTable tableName="test">
+            <column name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="test_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-8">
+        <createTable tableName="user_role">
+            <column name="user_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_role_pkey"/>
+            </column>
+            <column name="role_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_role_pkey"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-9">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="groups_subjects" constraintName="fk29g2avcaulsfu5d9hjdm22hok" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="groups" validate="true"/>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-10">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="passports" constraintName="fkbxf1dmm0wl2hf7c9pxggl4jcy" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-11">
+        <addForeignKeyConstraint baseColumnNames="subject_id" baseTableName="groups_subjects" constraintName="fkeisn93xy3tsk2c8teds6o1m38" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="subjects" validate="true"/>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-12">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="users" constraintName="fkemfuglprp85bh5xwhfm898ysc" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="groups" validate="true"/>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-13">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role" constraintName="fkj345gk1bovqvfame88rcx7yyx" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <changeSet author="maratsolncev (generated)" id="1680250833617-14">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_role" constraintName="fkt7e7djp752sqn6w22i6ocqy6q" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
